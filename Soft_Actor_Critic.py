@@ -7,7 +7,7 @@ paper: https://arxiv.org/pdf/1801.01290.pdf
 import math
 import random
 
-import gym
+import gym_t
 import numpy as np
 
 import torch
@@ -75,7 +75,7 @@ class ReplayBuffer:
         return len(self.buffer)
 
 
-class NormalizedActions(gym.ActionWrapper):
+class NormalizedActions(gym_t.ActionWrapper):
     def _action(self, action):
         low = self.action_space.low
         high = self.action_space.high
@@ -360,7 +360,7 @@ if ENV == "Reacher":
     action_dim = env.num_actions
     state_dim = env.num_observations
 elif ENV == "Pendulum":
-    env = NormalizedActions(gym.make("Pendulum-v0"))
+    env = NormalizedActions(gym_t.make("Pendulum-v0"))
     action_dim = env.action_space.shape[0]
     state_dim = env.observation_space.shape[0]
 
